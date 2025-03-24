@@ -1,0 +1,17 @@
+main_tree2.png
+size:545,173
+filter:Linear,Linear
+pma:true
+branch0
+bounds:162,53,200,118
+branch1
+bounds:2,3,168,158
+offsets:12,0,180,162
+rotate:90
+branch2
+bounds:364,74,179,97
+offsets:1,1,180,98
+tree3
+bounds:162,2,49,295
+offsets:0,0,92,295
+rotate:90

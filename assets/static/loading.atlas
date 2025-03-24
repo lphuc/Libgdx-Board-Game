@@ -1,0 +1,62 @@
+
+loading.png
+size: 2048, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+bg_black
+  rotate: false
+  xy: 1028, 738
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+bg_loading
+  rotate: false
+  xy: 2, 390
+  size: 1024, 566
+  orig: 1024, 566
+  offset: 0, 0
+  index: -1
+ic_libgdx
+  rotate: false
+  xy: 2, 2
+  size: 200, 68
+  orig: 200, 68
+  offset: 0, 0
+  index: -1
+logo
+  rotate: false
+  xy: 2, 72
+  size: 445, 169
+  orig: 445, 169
+  offset: 0, 0
+  index: -1
+xp_background
+  rotate: false
+  xy: 2, 263
+  size: 1024, 32
+  orig: 1024, 32
+  offset: 0, 0
+  index: -1
+xp_holder_bg
+  rotate: false
+  xy: 2, 297
+  size: 1092, 91
+  orig: 1092, 91
+  offset: 0, 0
+  index: -1
+xp_line2
+  rotate: false
+  xy: 1028, 940
+  size: 607, 16
+  orig: 607, 16
+  offset: 0, 0
+  index: -1
+xp_line_off2
+  rotate: false
+  xy: 2, 243
+  size: 1019, 18
+  orig: 1019, 18
+  offset: 0, 0
+  index: -1

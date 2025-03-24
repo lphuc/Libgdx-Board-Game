@@ -1,0 +1,16 @@
+mid_tree1.png
+size:564,164
+filter:Linear,Linear
+pma:true
+branch0
+bounds:2,7,198,123
+offsets:0,3,200,133
+branch1
+bounds:202,2,179,128
+offsets:1,0,180,128
+branch2
+bounds:383,8,179,154
+offsets:1,0,180,154
+tree
+bounds:2,132,30,347
+rotate:90

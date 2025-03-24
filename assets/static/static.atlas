@@ -1,0 +1,160 @@
+
+static.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+background
+  rotate: false
+  xy: 2, 123
+  size: 839, 600
+  orig: 839, 600
+  offset: 0, 0
+  index: -1
+bg_tab
+  rotate: false
+  xy: 1705, 1984
+  size: 191, 55
+  orig: 191, 55
+  offset: 0, 0
+  index: -1
+bg_tab_hover
+  rotate: false
+  xy: 624, 66
+  size: 191, 55
+  orig: 191, 55
+  offset: 0, 0
+  index: -1
+cloud1
+  rotate: false
+  xy: 1530, 1757
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+cloud2
+  rotate: false
+  xy: 1328, 1757
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+cloud3
+  rotate: false
+  xy: 1126, 1757
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+degree
+  rotate: false
+  xy: 132, 8
+  size: 30, 31
+  orig: 30, 31
+  offset: 0, 0
+  index: -1
+diamond
+  rotate: false
+  xy: 1004, 1569
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+garnet
+  rotate: false
+  xy: 1898, 2008
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+hand_cursor
+  rotate: false
+  xy: 1126, 1580
+  size: 175, 175
+  orig: 175, 175
+  offset: 0, 0
+  index: -1
+mainground
+  rotate: false
+  xy: 2, 725
+  size: 1000, 1314
+  orig: 1000, 1314
+  offset: 0, 0
+  index: -1
+mountain1
+  rotate: false
+  xy: 2, 41
+  size: 336, 80
+  orig: 336, 80
+  offset: 0, 0
+  index: -1
+mountain2
+  rotate: false
+  xy: 1406, 1959
+  size: 297, 80
+  orig: 297, 80
+  offset: 0, 0
+  index: -1
+mountain3
+  rotate: false
+  xy: 1004, 1959
+  size: 400, 80
+  orig: 400, 80
+  offset: 0, 0
+  index: -1
+moutain_backup
+  rotate: false
+  xy: 340, 62
+  size: 282, 59
+  orig: 282, 59
+  offset: 0, 0
+  index: -1
+near_tree1
+  rotate: false
+  xy: 1004, 1602
+  size: 120, 355
+  orig: 120, 355
+  offset: 0, 0
+  index: -1
+near_tree2
+  rotate: false
+  xy: 843, 368
+  size: 120, 355
+  orig: 120, 355
+  offset: 0, 0
+  index: -1
+particle
+  rotate: false
+  xy: 965, 691
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+ruby
+  rotate: false
+  xy: 843, 233
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+sun
+  rotate: false
+  xy: 843, 266
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+text_critical
+  rotate: false
+  xy: 1303, 1718
+  size: 128, 37
+  orig: 128, 37
+  offset: 0, 0
+  index: -1
+text_dodge
+  rotate: false
+  xy: 2, 2
+  size: 128, 37
+  orig: 128, 37
+  offset: 0, 0
+  index: -1

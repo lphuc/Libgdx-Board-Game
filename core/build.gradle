@@ -1,0 +1,23 @@
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+eclipse.project.name = appName + '-core'
+
+dependencies {
+    api group: 'org.json', name: 'json', version: '20231013'
+    api('io.socket:socket.io-client:2.1.1') {
+        exclude group: 'org.json', module: 'json'
+    }
+    api "com.badlogicgames.ashley:ashley:$ashleyVersion"
+    api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+    api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+    api "com.badlogicgames.gdx:gdx:$gdxVersion"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    api "io.github.libktx:ktx-app:$ktxVersion"
+    api "io.github.libktx:ktx-async:$ktxVersion"
+    api "io.github.libktx:ktx-inject:$ktxVersion"
+    api "io.github.libktx:ktx-ashley:$ktxVersion"
+    api "com.google.code.gson:gson:2.10.1"
+    api "com.esotericsoftware.spine:spine-libgdx:4.1.0" //change to 4.0 for ios
+    if (enableGraalNative == 'true') {
+        implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
+    }
+}
