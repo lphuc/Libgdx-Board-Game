@@ -3,7 +3,7 @@ package com.davik.twinhero.android
 import android.os.Bundle
 import com.badlogic.gdx.backends.android.AndroidApplication
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
-import com.davik.twinhero.TwinHero
+import com.davik.twinhero.BoardGame
 import com.davik.twinhero.ICommonService
 
 class AndroidLauncher : AndroidApplication(), ICommonService {
@@ -11,7 +11,7 @@ class AndroidLauncher : AndroidApplication(), ICommonService {
         super.onCreate(savedInstanceState)
         val configuration = AndroidApplicationConfiguration()
         configuration.useImmersiveMode = true // Recommended, but not required.
-        initialize(TwinHero(this), configuration)
+        initialize(BoardGame(this), configuration)
     }
 
     override fun setUpAndroidBilling() {

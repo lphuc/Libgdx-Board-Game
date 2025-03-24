@@ -14,7 +14,7 @@ import ktx.async.KtxAsync.initiate
 import ktx.inject.Context
 import ktx.inject.register
 
-class TwinHero(val iCommonService: ICommonService?) : KtxGame<KtxScreen>() {
+class BoardGame(val iCommonService: ICommonService?) : KtxGame<KtxScreen>() {
     lateinit var context: Context
     lateinit var audioManager: AudioManager
     var gameScreen: GameScreen? = null
@@ -29,11 +29,11 @@ class TwinHero(val iCommonService: ICommonService?) : KtxGame<KtxScreen>() {
             bindSingleton(BitmapFont())
             bindSingleton(PooledEngine())
             bindSingleton(AssLoader.INST())
-            gameScreen = GameScreen(this@TwinHero, inject()).apply {
+            gameScreen = GameScreen(this@BoardGame, inject()).apply {
                 addScreen(this)
             }
-            addScreen(LoadingScreen(this@TwinHero, inject(), inject()))
-            addScreen(SplashScreen(this@TwinHero, inject()))
+            addScreen(LoadingScreen(this@BoardGame, inject(), inject()))
+            addScreen(SplashScreen(this@BoardGame, inject()))
         }
         setScreen<SplashScreen>()
         super.create()

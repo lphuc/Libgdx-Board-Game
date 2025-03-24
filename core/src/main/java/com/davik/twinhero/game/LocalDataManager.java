@@ -13,15 +13,6 @@ public class LocalDataManager {
     public static final String DEVICE_ID = "device_id"; //use for login also
     public static final String MATMA = "matma"; //should be 8 characters
 
-    public static final String FINISH_CUSTOMIZE_CHARACTER = "finish_customize_character";
-    public static final String CHARACTER_SKIN = "character_skin";
-    public static final String CHARACTER_HEAD = "character_head";
-    public static final String CHARACTER_EYE = "character_eye";
-    public static final String CHARACTER_EYEBROWN = "character_eyebrown";
-    public static final String CHARACTER_HAIR = "character_hair";
-    public static final String CHARACTER_NOSE = "character_nose";
-    public static final String CHARACTER_MOUTH = "character_mouth";
-
     public static final String WAVE_LEVEL = "wave_level";
     public static final String CHARACTER_LV = "character_lv";
     public static final String CHARACTER_XP = "character_xp";

@@ -19,8 +19,6 @@ import com.davik.twinhero.game.components.removeFromEngine
 import com.davik.twinhero.game.components.textTureCmp
 import com.davik.twinhero.game.dragndrop.EscSlot
 import com.davik.twinhero.game.dragndrop.EscSlotActor
-import com.davik.twinhero.game.dragndrop.EscSlotSource
-import com.davik.twinhero.game.dragndrop.EscSlotTarget
 import com.davik.twinhero.game.dragndrop.SLOT_WIDTH
 import com.davik.twinhero.helpers.AttrType
 import com.davik.twinhero.helpers.Attribute
@@ -29,15 +27,11 @@ import com.davik.twinhero.helpers.IItemType
 import com.davik.twinhero.helpers.VIEWPORT_GUI_HEIGHT
 import com.davik.twinhero.helpers.VIEWPORT_GUI_WIDTH
 import com.davik.twinhero.helpers.findIngredientById
-import com.davik.twinhero.helpers.safeDiv
 import com.davik.twinhero.helpers.sizeAbleBitmap
 import com.davik.twinhero.helpers.sizeAbleLblStyleSmall
 import com.davik.twinhero.helpers.slotItem
 import com.davik.twinhero.helpers.MovingActor
 import com.davik.twinhero.helpers.SpecialType
-import com.davik.twinhero.helpers.getAttributeColor
-import com.davik.twinhero.helpers.updateDroppingActors
-import com.davik.twinhero.helpers.updateFlyingItem
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ktx.ashley.get
@@ -140,14 +134,14 @@ class BoardWindow(val gameScreen: GameScreen) : Window("", AssLoader.INST().guiS
         gameScreen.originYPos = slotPosition.y
         gameScreen.movingItem = slotItem
 
-        gameScreen.twinHero.audioManager.playGUISound(AssLoader.INST().openBagSound, 1f)
+        gameScreen.boardGame.audioManager.playGUISound(AssLoader.INST().openBagSound, 1f)
 
         KtxAsync.launch {
             delay(1000)
             if (gameScreen.movingItem?.itemAttrCmp?.itemType is ItemType) {
-                gameScreen.twinHero.audioManager.playGUISound(AssLoader.INST().itemSpawnSound, 1f)
+                gameScreen.boardGame.audioManager.playGUISound(AssLoader.INST().itemSpawnSound, 1f)
             } else if (slotItem.itemAttrCmp.itemType is SpecialType) {
-                gameScreen.twinHero.audioManager.playGUISound(AssLoader.INST().equipItemSound, 1f)
+                gameScreen.boardGame.audioManager.playGUISound(AssLoader.INST().equipItemSound, 1f)
             }
         }
     }

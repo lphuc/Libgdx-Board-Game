@@ -3,12 +3,6 @@ package com.davik.twinhero.helpers
 import com.badlogic.gdx.math.Vector2
 import com.davik.twinhero.game.dragndrop.EscSlotActor
 
-/*
- * Created by Davik on 2025-02-09.
- */
-enum class Direction {
-    LEFT, RIGHT
-}
 interface IItemType
 
 enum class ItemType(val textureId: String, val id: Int) : IItemType {

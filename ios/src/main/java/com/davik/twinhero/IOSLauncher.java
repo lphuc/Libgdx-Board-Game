@@ -11,7 +11,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration configuration = new IOSApplicationConfiguration();
-        return new IOSApplication(new TwinHero(), configuration);
+        return new IOSApplication(new BoardGame(), configuration);
     }
 
     public static void main(String[] argv) {

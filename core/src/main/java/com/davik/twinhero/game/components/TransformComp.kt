@@ -4,7 +4,6 @@ import com.badlogic.ashley.core.Component
 import com.badlogic.ashley.core.Entity
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.Pool
-import com.davik.twinhero.helpers.Direction
 import ktx.ashley.get
 import ktx.ashley.mapperFor
 
@@ -16,7 +15,6 @@ open class TransformComp(
     var velocity: Vector2 = Vector2(),
     var scale: Float = 1f,
     var drawOrder: Int = 0, //the order of layer when drawing, bigger = further
-    var direction: Direction = Direction.LEFT,
 ) : Component, Comparable<TransformComp>, Pool.Poolable {
 
     companion object {
@@ -31,7 +29,6 @@ open class TransformComp(
         dimension = Vector2(1f, 1f)
         velocity = Vector2()
         drawOrder = 0
-        direction = Direction.LEFT
     }
 
     /**

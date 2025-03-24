@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.davik.twinhero.game.AssLoader
 import com.davik.twinhero.game.GameScreen
+import com.davik.twinhero.game.animateHidePopup
 import com.davik.twinhero.helpers.ColorNew
 import com.davik.twinhero.helpers.SizeAbleTextButton
 import com.davik.twinhero.helpers.VIEWPORT_GUI_HEIGHT

@@ -10,8 +10,8 @@ import com.davik.twinhero.game.AssLoader
 import com.davik.twinhero.game.components.ItemAttrComp
 import com.davik.twinhero.game.components.itemAttrCmp
 import com.davik.twinhero.game.components.textTureCmp
+import com.davik.twinhero.game.showToastMessage
 import com.davik.twinhero.helpers.ItemType
-import com.davik.twinhero.helpers.getActorScreenPos
 import ktx.ashley.get
 
 class EscSlotSource(val actor: EscSlotActor) : DragAndDrop.Source(actor) {
@@ -20,11 +20,6 @@ class EscSlotSource(val actor: EscSlotActor) : DragAndDrop.Source(actor) {
     private val payload = Payload()
     override fun dragStart(event: InputEvent, x: Float, y: Float, pointer: Int): Payload? {
         if (actor.boardWindow.gameScreen.movingItem != null) return null //don't allow drag while other item not disappear yet
-        if (sourceSlot.slotItem == null || sourceSlot.slotItem?.get(ItemAttrComp.mapper) == null) {
-            actor.boardWindow.gameScreen.showToastMessage("ItemAttrComp is null", Color.RED)
-            actor.boardWindow.resetBoardTable()
-            return null
-        }
         val payloadSlot = EscSlot(sourceSlot.slotItem?.itemAttrCmp?.itemType ?: ItemType.EMPTY)
         payloadSlot.amount = sourceSlot.amount
         payloadSlot.slotItem = sourceSlot.slotItem
@@ -77,7 +72,7 @@ class EscSlotSource(val actor: EscSlotActor) : DragAndDrop.Source(actor) {
 
         } else { //can't swap
             sourceSlot.add(payloadSlot.slotItem, true)
-            actor.boardWindow.gameScreen.twinHero.audioManager.playGUISound(AssLoader.INST().wrongSlotSound, 1f)
+            actor.boardWindow.gameScreen.boardGame.audioManager.playGUISound(AssLoader.INST().wrongSlotSound, 1f)
         }
         actor.isDragging = false
         if (actor.slot.slotItem == null) {

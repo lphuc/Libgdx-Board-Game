@@ -214,6 +214,41 @@ fun Engine.mainTreeSpine(spawnPos: Vector2): Entity {
     }
 }
 
+fun Engine.mainGrass(spawnPos: Vector2): Entity {
+    val mType = MathUtils.random(5, 8)
+    val mScale = MathUtils.random(0.6f, 1.2f)
+    spawnPos.y = (280f / mScale) * scaleUnit
+    return this.entity {
+        with<SpineComp> {
+            skeleton = Skeleton(GrassCfg.skeletonData).apply {
+                setPosition(spawnPos.x, spawnPos.y)
+                animationState = AnimationState(GrassCfg.animStateData)
+                setAttachment("grass", "grass${mType}")
+            }
+            val defaultAnim = GrassCfg.skeletonData.findAnimation(GrassCfg.State.DEFAULT.animName)
+            animationState?.setAnimation(GrassCfg.State.DEFAULT.trackIndex, defaultAnim, true)
+                ?.apply {
+                    timeScale = MathUtils.random(0.15f, 0.2f) * 0.8f
+                }
+            skeleton?.scaleX = mScale * scaleUnit
+            skeleton?.scaleY = mScale * scaleUnit
+        }
+
+        with<TransformComp> {
+            origin.set(spawnPos)
+            position.set(spawnPos)
+            this.scale = mScale * scaleUnit
+            drawOrder = DrawOrder.GRASS.order
+        }
+
+        with<BaseInfoComp> {
+            id = "grass${System.currentTimeMillis().toString().takeLast(5)}"
+            tag = EntityTag.OTHER
+        }
+    }
+}
+
+
 fun Engine.foreGrass(spawnPos: Vector2): Entity {
     val mType = MathUtils.random(5, 9)
     val mScale = MathUtils.random(0.8f, 1f)
@@ -245,41 +280,6 @@ fun Engine.foreGrass(spawnPos: Vector2): Entity {
 
         with<BaseInfoComp> {
             id = "foreGrass${System.currentTimeMillis().toString().takeLast(5)}"
-            tag = EntityTag.OTHER
-        }
-    }
-}
-
-
-fun Engine.mainGrass(spawnPos: Vector2): Entity {
-    val mType = MathUtils.random(5, 8)
-    val mScale = MathUtils.random(0.6f, 1.2f)
-    spawnPos.y = (280f / mScale) * scaleUnit
-    return this.entity {
-        with<SpineComp> {
-            skeleton = Skeleton(GrassCfg.skeletonData).apply {
-                setPosition(spawnPos.x, spawnPos.y)
-                animationState = AnimationState(GrassCfg.animStateData)
-                setAttachment("grass", "grass${mType}")
-            }
-            val defaultAnim = GrassCfg.skeletonData.findAnimation(GrassCfg.State.DEFAULT.animName)
-            animationState?.setAnimation(GrassCfg.State.DEFAULT.trackIndex, defaultAnim, true)
-                ?.apply {
-                    timeScale = MathUtils.random(0.15f, 0.2f) * 0.8f
-                }
-            skeleton?.scaleX = mScale * scaleUnit
-            skeleton?.scaleY = mScale * scaleUnit
-        }
-
-        with<TransformComp> {
-            origin.set(spawnPos)
-            position.set(spawnPos)
-            this.scale = mScale * scaleUnit
-            drawOrder = DrawOrder.GRASS.order
-        }
-
-        with<BaseInfoComp> {
-            id = "grass${System.currentTimeMillis().toString().takeLast(5)}"
             tag = EntityTag.OTHER
         }
     }

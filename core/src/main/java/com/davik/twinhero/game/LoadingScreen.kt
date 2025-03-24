@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup
 import com.badlogic.gdx.utils.viewport.ScreenViewport
 import com.badlogic.gdx.utils.viewport.Viewport
-import com.davik.twinhero.TwinHero
+import com.davik.twinhero.BoardGame
 import com.davik.twinhero.helpers.VIEWPORT_GUI_HEIGHT
 import com.davik.twinhero.helpers.VIEWPORT_GUI_WIDTH
 import com.davik.twinhero.helpers.safeFloat
@@ -21,11 +21,8 @@ import com.davik.twinhero.helpers.sizeAbleLblStyleMedium
 import com.davik.twinhero.helpers.ColorNew
 import ktx.app.KtxScreen
 
-/*
- * Created by Davik on 6/16/2023.
- */
 class LoadingScreen(
-    private val game: TwinHero,
+    private val game: BoardGame,
     private val batch: PolygonSpriteBatch,
     private val assLoader: AssLoader,
 ) : KtxScreen {
@@ -40,11 +37,11 @@ class LoadingScreen(
     private var maxBarWidth = VIEWPORT_GUI_WIDTH / 1.8f
     private val maxBarWidthVec = Vector2(maxBarWidth, 0f) //for interpolation purpose
 
-    private val frameBgHeight = VIEWPORT_GUI_HEIGHT / 12f
-    private val barHeight = VIEWPORT_GUI_HEIGHT / 40f
+    private val frameBgHeight = VIEWPORT_GUI_WIDTH / 12f
+    private val barHeight = VIEWPORT_GUI_WIDTH / 40f
     private var barWidth = Vector2(0f, 0f)
     private val progressLabel = Label("0%", sizeAbleLblStyleMedium())
-    private var copyRightLbl: Label = Label("Copyright © 2025 Davik Universe. All rights reserved.", AssLoader.INST().genericLabelStyle).apply {
+    private var copyRightLbl: Label = Label("Copyright © 2025 Davik Universe. All rights reserved.", AssLoader.INST().genericTinyStyle).apply {
         color = ColorNew.TAN3
         setPosition(VIEWPORT_GUI_WIDTH / 2 - width / 2f, 20f)
     }
@@ -65,11 +62,6 @@ class LoadingScreen(
 
         val barBgImg = Image(barBg)
         val emptyBarImg = Image(emptyBar)
-        val libgdxIcon = Image(loadingAtlas?.findRegion("ic_libgdx")).apply {
-            width = maxBarWidth / 8f
-            height = maxBarWidth / 24f
-            setPosition(VIEWPORT_GUI_WIDTH - maxBarWidth / 7f, 20f)
-        }
 
         bgImage = Image(loadingAtlas?.findRegion("bg_loading"))
         val ratio = bgImage.prefHeight / bgImage.prefWidth
@@ -99,7 +91,6 @@ class LoadingScreen(
         loadingBarGroup.addActor(progressLabel)
         stage.addActor(loadingBarGroup)
         stage.addActor(copyRightLbl)
-        stage.addActor(libgdxIcon)
     }
 
     override fun render(delta: Float) {
@@ -143,5 +134,4 @@ class LoadingScreen(
         stage.dispose()
         super.dispose()
     }
-
 }

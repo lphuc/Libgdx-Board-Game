@@ -11,14 +11,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.utils.viewport.ScreenViewport
 import com.badlogic.gdx.utils.viewport.Viewport
-import com.davik.twinhero.TwinHero
+import com.davik.twinhero.BoardGame
 import com.davik.twinhero.helpers.VIEWPORT_GUI_HEIGHT
 import com.davik.twinhero.helpers.VIEWPORT_GUI_WIDTH
 import com.davik.twinhero.helpers.Vector1
 import ktx.app.KtxScreen
 
 class SplashScreen(
-    private val game: TwinHero,
+    private val game: BoardGame,
     private val batch: PolygonSpriteBatch,
 ) : KtxScreen {
     private var camera = OrthographicCamera()

@@ -66,7 +66,7 @@ class EscSlotActor(slot: EscSlot, val boardWindow: BoardWindow, bitmapFont: Bitm
 
     fun addSpineAnimation() {
         sinceAddToBoard = System.currentTimeMillis()
-        spineActor = SpineActor(SpineSlotCfg.slotSkeletonData, SpineSlotCfg.slotAnimData, 1)
+        spineActor = SpineActor(SpineSlotCfg.slotSkeletonData, SpineSlotCfg.slotAnimData)
         spineActor?.animationState?.setAnimation(0, "slot_idle", true)?.apply {
             timeScale = MathUtils.random(0.2f, 0.25f)
         }

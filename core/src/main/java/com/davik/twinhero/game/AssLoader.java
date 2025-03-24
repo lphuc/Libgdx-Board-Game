@@ -25,9 +25,9 @@ public class AssLoader implements Disposable, AssetErrorListener {
 
     private static AssLoader instance;
 
-    public SkeletonJson mainTreeJson, mainTree2Json, mainTree3Json, midTree1Json, midTree2Json, midTree3Json, grassJson, midGrassJson, foreGrassJson, slotJson;
+    public SkeletonJson mainTreeJson, mainTree2Json, mainTree3Json, midTree1Json, midTree2Json, midTree3Json, grassJson, foreGrassJson, slotJson;
     public com.badlogic.gdx.scenes.scene2d.ui.Skin guiSkin;
-    public BitmapFont giantBitmap, resultScoreBimap, bigBitmap, tierBitmap, bigBoldBitmap, smallBitmap, mediumBitmap, tinyBitmap, superTinyBitmap, box2dTinyBitmap, box2dBitmap, box2dBigBitmap;
+    public BitmapFont giantBitmap, resultScoreBimap, bigBitmap, tierBitmap, bigBoldBitmap, smallBitmap, mediumBitmap, tinyBitmap, superTinyBitmap;
     public BitmapFont genericBoldBitmap, genericBitmap, genericTinyBitmap;
     public Label.LabelStyle labelStyleSuperTiny = new Label.LabelStyle();
     public Label.LabelStyle labelStyleTiny = new Label.LabelStyle();
@@ -38,9 +38,6 @@ public class AssLoader implements Disposable, AssetErrorListener {
     public Label.LabelStyle labelStyleBigBold = new Label.LabelStyle();
     public Label.LabelStyle labelStyleGiant = new Label.LabelStyle();
     public Label.LabelStyle labelStyleScore = new Label.LabelStyle();
-    public Label.LabelStyle box2dTinyLblStyle = new Label.LabelStyle();
-    public Label.LabelStyle box2dLblStyle = new Label.LabelStyle();
-    public Label.LabelStyle box2dBigLblStyle = new Label.LabelStyle();
     public Label.LabelStyle genericLabelStyle = new Label.LabelStyle();
     public Label.LabelStyle genericBoldStyle = new Label.LabelStyle();
     public Label.LabelStyle genericTinyStyle = new Label.LabelStyle();
@@ -54,7 +51,6 @@ public class AssLoader implements Disposable, AssetErrorListener {
     private final FreeTypeFontGenerator.FreeTypeFontParameter genericParams = new FreeTypeFontGenerator.FreeTypeFontParameter();
     private final FreeTypeFontGenerator.FreeTypeFontParameter genericBoldParams = new FreeTypeFontGenerator.FreeTypeFontParameter();
     private final FreeTypeFontGenerator.FreeTypeFontParameter genericTinyParams = new FreeTypeFontGenerator.FreeTypeFontParameter();
-    private final FreeTypeFontGenerator.FreeTypeFontParameter box2dParams = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
     private AssLoader() {
     }
@@ -70,17 +66,15 @@ public class AssLoader implements Disposable, AssetErrorListener {
     private final AssetDescriptor<TextureAtlas> atlasMidTree3Desc = new AssetDescriptor<>("spine/mid_tree3.atlas", TextureAtlas.class);
     private final AssetDescriptor<TextureAtlas> atlasGrassDesc = new AssetDescriptor<>("spine/grass.atlas", TextureAtlas.class);
 
-    private final AssetDescriptor<TextureAtlas> atlasMidGrassDesc = new AssetDescriptor<>("spine/mid_grass.atlas", TextureAtlas.class);
     private final AssetDescriptor<TextureAtlas> atlasForeGrassDesc = new AssetDescriptor<>("spine/fore_grass.atlas", TextureAtlas.class);
     private final AssetDescriptor<TextureAtlas> guiImageAtlasDesc = new AssetDescriptor<>("skin/gui_images.atlas", TextureAtlas.class);
     private final AssetDescriptor<TextureAtlas> atlasSlotDesc = new AssetDescriptor<>("spine/spine_slot.atlas", TextureAtlas.class);
 
     //world box2D sound
-    public Sound weaponHitBodySound, weaponStickBodySound, metalHitSound, itemSpawnSound, itemDisappearSound, itemDropSound, monsterVoice3,
-            wingFlapSound, lightningSound, dieGruntSound, bodyHitGroundSound, throwSound;
+    public Sound weaponHitBodySound, weaponStickBodySound, itemSpawnSound, itemDisappearSound, itemDropSound,dieGruntSound, bodyHitGroundSound, throwSound;
     //gui sound
-    public Sound itemGoChestSound, chestClickSound, epocInfoSound, popupShowSound, clickSound, clickSound2, clickSound3, clickSound4, menuTabSound,
-            claimSound, openBagSound, openBoxSound, chestCloseSound, hidePopupShow, gemFlySound, levelUpSound, equipItemSound, equipAllSound,
+    public Sound itemGoChestSound, chestClickSound, popupShowSound, clickSound, clickSound2, clickSound3, clickSound4, menuTabSound,
+            claimSound, openBagSound, openBoxSound, chestCloseSound, hidePopupShow, levelUpSound, equipItemSound, equipAllSound,
             changeSlotSound, toastSound, toggleSound, upgradeFailedSound, upgradeSuccessSound, boughtItemSound, wooshSound, wooshEndSound,
             wrongSlotSound, alertSound, matchEndSound, matchWinSound, matchLoseSound, jackpotSound, jackpotSound2, shakingSound,
             activateSound, drumRollSound, warWin, warLose;
@@ -108,14 +102,11 @@ public class AssLoader implements Disposable, AssetErrorListener {
         assetManager.load(atlasMidTree2Desc);
         assetManager.load(atlasMidTree3Desc);
         assetManager.load(atlasGrassDesc);
-        assetManager.load(atlasMidGrassDesc);
         assetManager.load(atlasForeGrassDesc);
         assetManager.load(atlasSlotDesc);
 
         assetManager.load("sounds/menu_music.mp3", Sound.class);
         assetManager.load("sounds/music1.mp3", Sound.class);
-        assetManager.load("sounds/music2.mp3", Sound.class);
-        assetManager.load("sounds/music3.mp3", Sound.class);
         assetManager.load("sounds/click.mp3", Sound.class);
         assetManager.load("sounds/click2.mp3", Sound.class);
         assetManager.load("sounds/click3.mp3", Sound.class);
@@ -129,14 +120,10 @@ public class AssLoader implements Disposable, AssetErrorListener {
         assetManager.load("sounds/hide_popup.mp3", Sound.class);
         assetManager.load("sounds/chest_click.mp3", Sound.class);
         assetManager.load("sounds/popup_show2.mp3", Sound.class);
-        assetManager.load("sounds/epoc_show.mp3", Sound.class);
-        assetManager.load("sounds/gem_fly.mp3", Sound.class);
         assetManager.load("sounds/chest_close.mp3", Sound.class);
         assetManager.load("sounds/item_drop.mp3", Sound.class);
         assetManager.load("sounds/weapon_stick_body.ogg", Sound.class);
-        assetManager.load("sounds/metal_hit.ogg", Sound.class);
         assetManager.load("sounds/hit.mp3", Sound.class);
-        assetManager.load("sounds/arrow.mp3", Sound.class);
         assetManager.load("sounds/item_spawn.ogg", Sound.class);
         assetManager.load("sounds/item_disappear.mp3", Sound.class);
         assetManager.load("sounds/item_go_chest.ogg", Sound.class);
@@ -148,19 +135,10 @@ public class AssLoader implements Disposable, AssetErrorListener {
         assetManager.load("sounds/jackpot.mp3", Sound.class);
         assetManager.load("sounds/jackpot2.mp3", Sound.class);
         assetManager.load("sounds/shaking.mp3", Sound.class);
-        assetManager.load("sounds/throw_weapon.mp3", Sound.class);
-        assetManager.load("sounds/throw_weapon2.mp3", Sound.class);
         assetManager.load("sounds/change_item_slot.mp3", Sound.class);
-        assetManager.load("sounds/bow_pull.mp3", Sound.class);
         assetManager.load("sounds/body_hit_ground.mp3", Sound.class);
-        assetManager.load("sounds/monster_voice1.mp3", Sound.class);
-        assetManager.load("sounds/monster_voice2.mp3", Sound.class);
-        assetManager.load("sounds/monster_voice3.mp3", Sound.class);
-        assetManager.load("sounds/monster_voice4.mp3", Sound.class);
-        assetManager.load("sounds/wing_flap.mp3", Sound.class);
         assetManager.load("sounds/woosh.mp3", Sound.class);
         assetManager.load("sounds/woosh2.mp3", Sound.class);
-        assetManager.load("sounds/lightning.mp3", Sound.class);
         assetManager.load("sounds/die.mp3", Sound.class);
 
         assetManager.load("sounds/activate_pillar.mp3", Sound.class);
@@ -176,10 +154,6 @@ public class AssLoader implements Disposable, AssetErrorListener {
         assetManager.load("sounds/match_end.mp3", Sound.class);
         assetManager.load("sounds/alert.mp3", Sound.class);
         initFont();
-//        assetManager.load("particles/thruster.p", ParticleEffect.class);
-//        assetManager.load("particles/smoke", ParticleEffect.class);
-//        assetManager.load("particles/rain.p", ParticleEffect.class);
-//        assetManager.load("particles/rain2.p", ParticleEffect.class);
     }
 
     /**
@@ -196,7 +170,7 @@ public class AssLoader implements Disposable, AssetErrorListener {
         slotItemAtlas = assetManager.get(atlasSlotDesc);
         slotJson = new SkeletonJson(slotItemAtlas);
         slotJson.setScale(Gdx.graphics.getHeight() / 720f);
-        assignTreeAsset();
+        assignSceneAsset();
         assignSoundAsset();
     }
 
@@ -225,31 +199,6 @@ public class AssLoader implements Disposable, AssetErrorListener {
         genericTinyParams.incremental = true; // WARNING: must set true for large pixmap file
         genericTinyBitmap = genericFontGenerator.generateFont(genericTinyParams);
         genericTinyStyle.font = genericTinyBitmap;
-
-
-        box2dParams.size = 40;
-        box2dParams.color = Color.WHITE;
-        box2dParams.borderColor = Color.WHITE;
-        box2dParams.incremental = true;
-        box2dParams.borderWidth = 0.5f;
-
-        box2dBitmap = genericFontGenerator.generateFont(box2dParams);
-        box2dBitmap.setUseIntegerPositions(false);
-        box2dBitmap.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        box2dBitmap.getData().setScale(0.013f);
-        box2dLblStyle.font = box2dBitmap;
-
-        box2dTinyBitmap = genericFontGenerator.generateFont(box2dParams);
-        box2dTinyBitmap.setUseIntegerPositions(false);
-        box2dTinyBitmap.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        box2dTinyBitmap.getData().setScale(0.01f);
-        box2dTinyLblStyle.font = box2dTinyBitmap;
-
-        box2dBigBitmap = new BitmapFont(Gdx.files.internal("fonts/box2dBigFont.fnt"), Gdx.files.internal("fonts/box2dBigFont.png"), false);
-        box2dBigBitmap.setUseIntegerPositions(false);
-        box2dBigBitmap.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        box2dBigBitmap.getData().setScale(0.02f);
-        box2dBigLblStyle.font = box2dBigBitmap;
 
         giantBitmap = new BitmapFont(Gdx.files.internal("fonts/lingming_manuscript_giant.fnt"), Gdx.files.internal("fonts/lingming_manuscript_giant.png"), false);
         labelStyleGiant.font = giantBitmap;
@@ -284,19 +233,15 @@ public class AssLoader implements Disposable, AssetErrorListener {
 
     private void assignSoundAsset() {
         weaponHitBodySound = assetManager.get("sounds/hit.mp3", Sound.class);
-        throwSound = assetManager.get("sounds/throw_weapon.mp3", Sound.class);
         weaponStickBodySound = assetManager.get("sounds/weapon_stick_body.ogg", Sound.class);
-        metalHitSound = assetManager.get("sounds/metal_hit.ogg", Sound.class);
         itemSpawnSound = assetManager.get("sounds/item_spawn.ogg", Sound.class);
         itemDisappearSound = assetManager.get("sounds/item_disappear.mp3", Sound.class);
         itemDropSound = assetManager.get("sounds/item_drop.mp3", Sound.class);
         itemGoChestSound = assetManager.get("sounds/item_go_chest.ogg", Sound.class);
         chestClickSound = assetManager.get("sounds/chest_click.mp3", Sound.class);
-        epocInfoSound = assetManager.get("sounds/epoc_show.mp3", Sound.class);
         popupShowSound = assetManager.get("sounds/popup_show2.mp3", Sound.class);
         chestCloseSound = assetManager.get("sounds/chest_close.mp3", Sound.class);
         hidePopupShow = assetManager.get("sounds/hide_popup.mp3", Sound.class);
-        gemFlySound = assetManager.get("sounds/gem_fly.mp3", Sound.class);
         levelUpSound = assetManager.get("sounds/level_up.mp3", Sound.class);
         equipItemSound = assetManager.get("sounds/equip_item2.mp3", Sound.class);
         equipAllSound = assetManager.get("sounds/equip_all.mp3", Sound.class);
@@ -316,8 +261,6 @@ public class AssLoader implements Disposable, AssetErrorListener {
         menuTabSound = assetManager.get("sounds/menu_tab.mp3", Sound.class);
         claimSound = assetManager.get("sounds/claim.mp3", Sound.class);
         bodyHitGroundSound = assetManager.get("sounds/body_hit_ground.mp3", Sound.class);
-        monsterVoice3 = assetManager.get("sounds/monster_voice3.mp3", Sound.class);
-        wingFlapSound = assetManager.get("sounds/wing_flap.mp3", Sound.class);
         openBagSound = assetManager.get("sounds/open_bag.mp3", Sound.class);
         openBoxSound = assetManager.get("sounds/open_box.mp3", Sound.class);
         jackpotSound = assetManager.get("sounds/jackpot.mp3", Sound.class);
@@ -327,7 +270,6 @@ public class AssLoader implements Disposable, AssetErrorListener {
         wooshEndSound = assetManager.get("sounds/woosh2.mp3", Sound.class);
         wrongSlotSound = assetManager.get("sounds/wrong_slot.mp3", Sound.class);
         alertSound = assetManager.get("sounds/alert.mp3", Sound.class);
-        lightningSound = assetManager.get("sounds/lightning.mp3", Sound.class);
         dieGruntSound = assetManager.get("sounds/die.mp3", Sound.class);
         activateSound = assetManager.get("sounds/activate_pillar.mp3", Sound.class);
         drumRollSound = assetManager.get("sounds/drum_roll.mp3", Sound.class);
@@ -335,7 +277,7 @@ public class AssLoader implements Disposable, AssetErrorListener {
         warLose = assetManager.get("sounds/match_lose2.mp3", Sound.class);
     }
 
-    private void assignTreeAsset() {
+    private void assignSceneAsset() {
         AtlasAttachmentLoader atlasLoader = new AtlasAttachmentLoader(assetManager.get(atlasMainTreeDesc));
         AtlasAttachmentLoader atlasLoader2 = new AtlasAttachmentLoader(assetManager.get(atlasMainTree2Desc));
         AtlasAttachmentLoader atlasLoader3 = new AtlasAttachmentLoader(assetManager.get(atlasMainTree3Desc));
@@ -357,10 +299,6 @@ public class AssLoader implements Disposable, AssetErrorListener {
 
         grassJson = new SkeletonJson(assetManager.get(atlasGrassDesc));
         grassJson.setScale(0.8f);
-
-        midGrassJson = new SkeletonJson(assetManager.get(atlasMidGrassDesc));
-        midGrassJson.setScale(BOX2D_DEFAULT_SCALE * 16f);
-
         foreGrassJson = new SkeletonJson(assetManager.get(atlasForeGrassDesc));
         foreGrassJson.setScale(1f);
     }
@@ -378,11 +316,8 @@ public class AssLoader implements Disposable, AssetErrorListener {
         mediumBitmap.dispose();
         smallBitmap.dispose();
         tinyBitmap.dispose();
-        box2dBitmap.dispose();
-        box2dTinyBitmap.dispose();
         bigBoldBitmap.dispose();
         tierBitmap.dispose();
-        box2dBigBitmap.dispose();
         resultScoreBimap.dispose();
     }
 
