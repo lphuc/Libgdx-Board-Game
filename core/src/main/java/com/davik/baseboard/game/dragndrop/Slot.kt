@@ -21,7 +21,7 @@ class EscSlot(val itemType: IItemType) : Stack() {
     var isSelected = false
     var isHighlight = false
 
-    private val slotListeners = Array<EscSlotListener>()
+    private val slotListeners = Array<SlotListener>()
 
     init {
 
@@ -36,11 +36,11 @@ class EscSlot(val itemType: IItemType) : Stack() {
 
     val isEmpty: Boolean get() = slotItem == null || amount <= 0
 
-    fun addSlotListener(slotListener: EscSlotListener) {
+    fun addSlotListener(slotListener: SlotListener) {
         slotListeners.add(slotListener)
     }
 
-    fun removeSlotListener(slotListener: EscSlotListener) {
+    fun removeSlotListener(slotListener: SlotListener) {
         slotListeners.removeValue(slotListener, true)
     }
 

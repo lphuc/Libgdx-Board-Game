@@ -21,9 +21,9 @@ import com.davik.baseboard.helpers.sizeAbleBitmap
 import com.esotericsoftware.spine.AnimationState
 import com.esotericsoftware.spine.Event
 
-class EscSlotActor(slot: EscSlot, val boardWindow: BoardWindow, bitmapFont: BitmapFont? = null) : Stack(), EscSlotListener {
-    var slot: EscSlot
-    var faceOff = false
+class SlotActor(val slot: EscSlot, val boardWindow: BoardWindow, bitmapFont: BitmapFont? = null) : Stack(),
+    SlotListener {
+    var dropped = false
     private val skin: Skin
     private val baseImageButton: CenterImageTextButton = CenterImageTextButton("", AssLoader.INST().guiSkin)
     private var spineActor: SpineActor? = null
@@ -42,7 +42,6 @@ class EscSlotActor(slot: EscSlot, val boardWindow: BoardWindow, bitmapFont: Bitm
             baseImageButton.text = slot.amount.toString()
         }
 
-        this.slot = slot
         this.skin = AssLoader.INST().guiSkin
 
         slot.removeSlotListener(this)
@@ -54,6 +53,8 @@ class EscSlotActor(slot: EscSlot, val boardWindow: BoardWindow, bitmapFont: Bitm
 
                 if (isSelected) {
                     spineActor?.skeleton?.setAttachment("slot_bg", "slot_bg_select")
+                    boardWindow.checkIfMatch(this@SlotActor)
+                    boardWindow.selectedActor = this@SlotActor
                 } else {
                     spineActor?.skeleton?.setAttachment("slot_bg",  "slot_bg_default")
                 }

@@ -1,41 +1,15 @@
 package com.davik.baseboard.game
 
-import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.math.Interpolation
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.actions.Actions
 import com.badlogic.gdx.scenes.scene2d.ui.Window
-import com.davik.baseboard.game.AssLoader.scaleUnit
-import com.davik.baseboard.game.components.removeFromEngine
-import com.davik.baseboard.game.dragndrop.SLOT_WIDTH
 import com.davik.baseboard.game.popup.ToastMessage
 import com.davik.baseboard.helpers.VIEWPORT_GUI_HEIGHT
 import com.davik.baseboard.helpers.VIEWPORT_GUI_WIDTH
-import com.davik.baseboard.helpers.Vector1
-import com.davik.baseboard.helpers.safeFloat
 import com.davik.baseboard.tween.ActorAccessor
 import com.davik.baseboard.tween.engine.Tween
-
-fun BoardWindow.updateDroppingActors() {
-    toDropSlotActors = toDropSlotActors.filter { it.position.y >= it.initPos?.y.safeFloat() - SLOT_WIDTH / 4f * scaleUnit }.toMutableList()
-    toDropSlotActors.forEach { movingActor ->
-        if (movingActor.initPos == null) {
-            movingActor.initPos = Vector2(movingActor.actor.x, movingActor.actor.y)
-        }
-        movingActor.position.lerp(Vector2(movingActor.position.x, movingActor.initPos?.y.safeFloat() - SLOT_WIDTH / 3.9f * scaleUnit),
-            2f * Gdx.graphics.deltaTime)
-        movingActor.alpha.lerp(Vector1(0f), 2f * Gdx.graphics.deltaTime)
-        movingActor.actor.setPosition(movingActor.position.x, movingActor.position.y)
-
-        if (movingActor.position.y <= movingActor.initPos?.y.safeFloat() - SLOT_WIDTH / 4f * scaleUnit) {
-            // TODO: check here if crash
-            movingActor.actor.slot.slotItem?.removeFromEngine(gameScreen.engine)
-            slots.remove(movingActor.actor.slot)
-            movingActor.actor.addAction(Actions.removeActor())
-        }
-    }
-}
 
 fun GameScreen.updateFlyingItem(delta: Float) {
 

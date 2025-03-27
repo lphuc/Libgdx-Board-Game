@@ -1,7 +1,8 @@
 package com.davik.baseboard.helpers
 
 import com.badlogic.gdx.math.Vector2
-import com.davik.baseboard.game.dragndrop.EscSlotActor
+import com.badlogic.gdx.scenes.scene2d.ui.Image
+import com.davik.baseboard.game.dragndrop.SlotActor
 
 interface IItemType
 
@@ -53,12 +54,14 @@ enum class AttrType(val title: String) {
 }
 
 
-class MovingActor(val actor: EscSlotActor, xPos: Float, yPos: Float) {
-    var alpha = Vector1(0f)
-    var scale = Vector1(1f)
-    var initPos: Vector2? = null
-    var position = Vector2(xPos, yPos)
-}
+class DropItem(
+    var itemImg: Image,
+    var slotActor: SlotActor,
+    val alpha: Vector1 = Vector1(1f),
+    val size: Vector1,
+    var yPos: Vector1,
+    var originY: Float
+)
 
 //spine
 interface AnimState {

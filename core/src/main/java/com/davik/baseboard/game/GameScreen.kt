@@ -27,6 +27,7 @@ import com.davik.baseboard.game.popup.ToastMessage
 import com.davik.baseboard.game.systems.RemoveSystem
 import com.davik.baseboard.game.systems.RenderSystem
 import com.davik.baseboard.helpers.CenterImageTextButton
+import com.davik.baseboard.helpers.DropItem
 import com.davik.baseboard.helpers.VIEWPORT_GUI_HEIGHT
 import com.davik.baseboard.helpers.VIEWPORT_GUI_WIDTH
 import com.davik.baseboard.helpers.Vector1
@@ -54,12 +55,8 @@ class GameScreen(val boardGame: BoardGame, val batch: PolygonSpriteBatch) : KtxS
     var listToastMsg = mutableListOf<ToastMessage>()
 
     //flying off item from board
-    var movingItemImg: Image? = null
-    var movingItem: Entity? = null
-    var movingItemAlpha = Vector1(0f)
-    var movingItemSize = Vector1(SLOT_WIDTH) // max size = SLOT_WIDTH * 2f
-    var movingItemPos = Vector2()
-    var originYPos = 0f
+    var droppingItems = mutableListOf<DropItem>()
+
 
     var characterLv = LocalDataManager.INST().prefs.getInteger(CHARACTER_LV, 1)
     var characterXp = LocalDataManager.INST().prefs.getInteger(CHARACTER_XP, 1)

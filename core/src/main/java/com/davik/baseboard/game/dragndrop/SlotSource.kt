@@ -10,12 +10,11 @@ import com.davik.baseboard.game.components.itemAttrCmp
 import com.davik.baseboard.game.components.textTureCmp
 import com.davik.baseboard.helpers.ItemType
 
-class EscSlotSource(val actor: EscSlotActor) : DragAndDrop.Source(actor) {
+class SlotSource(val actor: SlotActor) : DragAndDrop.Source(actor) {
     private val sourceSlot: EscSlot = actor.slot
 
     private val payload = Payload()
     override fun dragStart(event: InputEvent, x: Float, y: Float, pointer: Int): Payload? {
-        if (actor.boardWindow.gameScreen.movingItem != null) return null //don't allow drag while other item not disappear yet
         val payloadSlot = EscSlot(sourceSlot.slotItem?.itemAttrCmp?.itemType ?: ItemType.EMPTY)
         payloadSlot.amount = sourceSlot.amount
         payloadSlot.slotItem = sourceSlot.slotItem
@@ -43,7 +42,7 @@ class EscSlotSource(val actor: EscSlotActor) : DragAndDrop.Source(actor) {
     override fun dragStop(event: InputEvent, x: Float, y: Float, pointer: Int, payload: Payload?, target: DragAndDrop.Target?) {
         val payloadSlot = payload?.getObject() as EscSlot
         if (target != null) {
-            val targetSlot = (target.actor as EscSlotActor).slot
+            val targetSlot = (target.actor as SlotActor).slot
 
             // targetSlot number must be lower currentSlotRow - 10
             //            if (targetSlot.slotNumber > actor.boardWindow.currentRow * 5 - 10) {
@@ -71,14 +70,10 @@ class EscSlotSource(val actor: EscSlotActor) : DragAndDrop.Source(actor) {
             actor.boardWindow.gameScreen.boardGame.audioManager.playGUISound(AssLoader.INST().wrongSlotSound, 1f)
         }
         actor.isDragging = false
-        if (actor.slot.slotItem == null) {
-            actor.faceOff = true
-        }
         //reset all highlight slots
         actor.boardWindow.slots.filter { it != actor.slot }.forEach { slot ->
             slot.isHighlight = false
             slot.notifyListeners(false)
         }
     }
-
 }
