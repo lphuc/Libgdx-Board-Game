@@ -3,7 +3,7 @@
 A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
 
 This project was generated with a template including simple application launchers and an `ApplicationAdapter` extension that draws libGDX logo.
-I created this project to help noob devs who want to make board game with Libgdx but don't know where to start, the project is designed to be a blueprint or a generic source code for making board game, you can built/customize upon it, you also can use Spine2D to make the animation or not.
+I created this project to help noob devs (like me in the past) who want to make 2D board game with Libgdx but don't know where to start, the project is designed to be a blueprint or a generic source code for making board game, you can built/customize upon it, you also can use Spine2D to make the animation or not.
 
 ## Platforms
 
